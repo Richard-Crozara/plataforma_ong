@@ -10,9 +10,23 @@
   <header>
     <h1>Instituto Esperança</h1>
     <nav>
-      <a href="index.html">Início</a> |
-      <a href="projetos.html">Projetos</a> |
-      <a href="cadastro.html">Cadastro</a>
+      <ul>
+        <li><a href="index.html" class="ativo">Início</a></li>
+        <li>
+          <a href="projetos.html">Projetos</a>
+          <ul>
+            <li><a href="projetos.html#alimentar">Alimentar com Amor</a></li>
+            <li><a href="projetos.html#futuro">Futuro Brilhante</a></li>
+            <li><a href="projetos.html#verde">Verde Esperança</a></li>
+          </ul>
+        </li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+      <div class="menu-hamburguer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
   </header>
 
@@ -20,7 +34,7 @@
     <section>
       <h2>Quem Somos</h2>
       <p>O Instituto Esperança é uma ONG que atua na inclusão social e combate à fome, promovendo projetos comunitários em todo o Brasil.</p>
-      <img src="imagens/ong1.jpg" alt="Voluntários ajudando em ação social" width="400">
+      <img src="imagens/ong1.jpg" alt="Voluntários ajudando em ação social" width="100%">
     </section>
 
     <section>
@@ -42,5 +56,88 @@
   <footer>
     <p>&copy; 2025 Instituto Esperança. Todos os direitos reservados.</p>
   </footer>
+
+<script>
+  // ===========================
+  // MENU MOBILE + A11Y
+  // ===========================
+  (function(){
+    const menuBtn = document.querySelector('.menu-hamburguer');
+    const navMenu = document.querySelector('nav ul');
+
+    // defensive checks
+    if(menuBtn && navMenu){
+      menuBtn.setAttribute('role','button');
+      menuBtn.setAttribute('tabindex','0');
+      menuBtn.setAttribute('aria-expanded','false');
+
+      const toggleMenu = () => {
+        const open = navMenu.classList.toggle('ativo');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      menuBtn.addEventListener('click', toggleMenu);
+      menuBtn.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); } });
+
+      // close when clicking outside on small screens
+      document.addEventListener('click', (e) => {
+        if(!navMenu.contains(e.target) && !menuBtn.contains(e.target) && navMenu.classList.contains('ativo')){
+          navMenu.classList.remove('ativo'); menuBtn.setAttribute('aria-expanded','false');
+        }
+      });
+    }
+  })();
+
+  // ===========================
+  // FORM MASKS + FEEDBACK (cadastro.html)
+  // ===========================
+  (function(){
+    const cpf = document.getElementById('cpf');
+    const telefone = document.getElementById('telefone');
+    const cep = document.getElementById('cep');
+    const form = document.getElementById('formCadastro');
+    const alerta = document.getElementById('alerta');
+
+    // masks (safe if element exists)
+    const mask = (el, fn) => { if(!el) return; el.addEventListener('input', fn); };
+
+    mask(cpf, e => {
+      let v = e.target.value.replace(/\D/g,'');
+      v = v.replace(/(\d{3})(\d)/,'$1.$2');
+      v = v.replace(/(\d{3})(\d)/,'$1.$2');
+      v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+      e.target.value = v;
+    });
+
+    mask(telefone, e => {
+      let v = e.target.value.replace(/\D/g,'');
+      v = v.replace(/^(\d{2})(\d)/g,'($1) $2');
+      v = v.replace(/(\d{5})(\d)/,'$1-$2');
+      e.target.value = v;
+    });
+
+    mask(cep, e => {
+      let v = e.target.value.replace(/\D/g,'');
+      v = v.replace(/^(\d{5})(\d)/,'$1-$2');
+      e.target.value = v;
+    });
+
+    // form submit - show alert visually (no network)
+    if(form && alerta){
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // simple client-side validation check
+        if(!form.checkValidity()){
+          alerta.innerHTML = '<div class="alert alert-erro">Por favor, preencha todos os campos corretamente.</div>';
+          return;
+        }
+        alerta.innerHTML = '<div class="alert alert-sucesso">Cadastro enviado com sucesso!</div>';
+        form.reset();
+        // remove alert after 4s
+        setTimeout(()=>{ alerta.innerHTML = ''; }, 4000);
+      });
+    }
+  })();
+</script>
 </body>
 </html>
