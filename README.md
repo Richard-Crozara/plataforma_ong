@@ -17,10 +17,11 @@ O projeto inclui páginas com informações sobre o Instituto, formulário de ca
 ├── js/  
 │   └── script.js  
 ├── css/  
-│   └── style.css 
+│   └── style.css  
 ├── imagens/  
-│   └── (arquivos de imagem utilizados no site)
+│   └── (arquivos de imagem utilizados no site)  
 └── README.md  
+
 
 ## Tecnologias Utilizadas
 
