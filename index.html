@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instituto Esperança - ONG</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Acessibilidade: Contraste e ícone -->
+  <link rel="icon" href="imagens/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <header>
+  <!-- Link para pular direto pro conteúdo -->
+  <a href="#app" class="skip-link">Ir para o conteúdo principal</a>
+
+  <header role="banner">
     <h1>Instituto Esperança</h1>
-    <nav>
+    <nav role="navigation" aria-label="Menu principal">
       <ul>
         <li><a href="#" data-page="home" class="ativo">Início</a></li>
         <li>
-          <a href="#" data-page="projetos">Projetos</a>
+          <a href="#" data-page="projetos" aria-haspopup="true" aria-expanded="false">Projetos</a>
           <ul>
             <li><a href="#" data-page="projetos" data-anchor="alimentar">Alimentar com Amor</a></li>
             <li><a href="#" data-page="projetos" data-anchor="futuro">Futuro Brilhante</a></li>
@@ -22,19 +28,20 @@
         </li>
         <li><a href="#" data-page="cadastro">Cadastro</a></li>
       </ul>
-      <div class="menu-hamburguer">
+
+      <button class="menu-hamburguer" aria-label="Abrir menu de navegação" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </nav>
   </header>
 
-  <main id="app">
-    <!-- Conteúdo será carregado via JS -->
+  <main id="app" tabindex="-1" role="main">
+    <!-- Conteúdo carregado via JavaScript -->
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>&copy; 2025 Instituto Esperança. Todos os direitos reservados.</p>
   </footer>
 

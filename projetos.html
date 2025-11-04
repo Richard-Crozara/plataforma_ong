@@ -7,26 +7,30 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
   <header>
     <h1>Projetos do Instituto Esperança</h1>
-    <nav>
+    <nav aria-label="Menu principal">
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html" class="ativo">Projetos</a></li>
+        <li><a href="projetos.html" class="ativo" aria-current="page">Projetos</a></li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
-      <div class="menu-hamburguer">
+      <button class="menu-hamburguer" aria-label="Abrir menu de navegação">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo-principal">
+    <h2>Nossos Projetos</h2>
+
     <!-- Card 1 -->
     <section class="card" id="alimentar">
-      <img src="imagens/projeto1.jpg" alt="Distribuição de alimentos">
+      <img src="imagens/projeto1.jpg" alt="Voluntários distribuindo alimentos a famílias carentes">
       <div class="card-body">
         <h3>Projeto Alimentar com Amor</h3>
         <span class="badge">Alimentação</span>
@@ -36,7 +40,7 @@
 
     <!-- Card 2 -->
     <section class="card" id="futuro">
-      <img src="imagens/projeto2.jpg" alt="Aulas de capacitação">
+      <img src="imagens/projeto2.jpg" alt="Instrutor dando aula de capacitação profissional para jovens">
       <div class="card-body">
         <h3>Projeto Futuro Brilhante</h3>
         <span class="badge">Educação</span>
@@ -46,7 +50,7 @@
 
     <!-- Card 3 -->
     <section class="card" id="verde">
-      <img src="imagens/projeto3.jpg" alt="Plantio de árvores">
+      <img src="imagens/projeto3.jpg" alt="Grupo de voluntários realizando plantio de árvores">
       <div class="card-body">
         <h3>Projeto Verde Esperança</h3>
         <span class="badge">Meio Ambiente</span>
@@ -59,8 +63,6 @@
     <p>&copy; 2025 Instituto Esperança. Todos os direitos reservados.</p>
   </footer>
 
-<script src="js/script.js"></script>
-
-
+  <script src="js/script.js"></script>
 </body>
 </html>
