@@ -10,7 +10,6 @@ O projeto inclui páginas com informações sobre o Instituto, formulário de ca
 
 ## Estrutura de Pastas
 
-/
 ├── index.html  
 ├── projetos.html  
 ├── cadastro.html  
